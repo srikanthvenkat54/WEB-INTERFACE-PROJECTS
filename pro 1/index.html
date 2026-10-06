@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter App | Srikanth V</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.35);
+      --positive: #10b981;
+      --negative: #ef4444;
+      --neutral: #3b82f6;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 40%);
+    }
+    .back-nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 50;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      color: #e5e7eb;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px -10px var(--accent-glow);
+      position: relative;
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 30%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .counter-display {
+      margin: 24px 0 32px;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      position: relative;
+    }
+    #count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--neutral);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: inline-block;
+    }
+    .count-status {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    #increase {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+    }
+    #increase:hover {
+      box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.6);
+      transform: translateY(-2px);
+    }
+    #decrease {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.4);
+    }
+    #decrease:hover {
+      box-shadow: 0 12px 24px -4px rgba(239, 68, 68, 0.6);
+      transform: translateY(-2px);
+    }
+    #reset {
+      grid-column: span 2;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e5e7eb;
+    }
+    #reset:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .shortcuts {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    kbd {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #d1d5db;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="back-nav">
+    <a href="../../index.html" class="back-btn">← Back to Hub</a>
+  </div>
+
+  <div class="card">
+    <span class="badge">Project 01 • HTML & JS</span>
+    <h1>Counter App</h1>
+    <p class="subtitle">Interactive state manipulation with vanilla JavaScript</p>
+
+    <div class="counter-display">
+      <h2 id="count">0</h2>
+      <div class="count-status" id="status">At Zero</div>
+    </div>
+
+    <div class="btn-grid">
+      <button id="increase" aria-label="Increase count">+1</button>
+      <button id="decrease" aria-label="Decrease count">-1</button>
+      <button id="reset" aria-label="Reset count">↺ Reset to Zero</button>
+    </div>
+
+    <div class="shortcuts">
+      Shortcuts: <kbd>↑</kbd> Add • <kbd>↓</kbd> Subtract • <kbd>R</kbd> Reset
+    </div>
+  </div>
+
+  <script>
+    let counter = 0;
+    const count = document.getElementById("count");
+    const status = document.getElementById("status");
+
+    function updateDisplay() {
+      count.textContent = counter;
+      if (counter > 0) {
+        count.style.color = 'var(--positive)';
+        status.textContent = 'Positive (' + counter + ')';
+      } else if (counter < 0) {
+        count.style.color = 'var(--negative)';
+        status.textContent = 'Negative (' + counter + ')';
+      } else {
+        count.style.color = 'var(--neutral)';
+        status.textContent = 'At Zero';
+      }
+      count.style.transform = 'scale(1.15)';
+      setTimeout(() => { count.style.transform = 'scale(1)'; }, 150);
+    }
+
+    document.getElementById("increase").addEventListener("click", function () {
+      counter++;
+      updateDisplay();
+    });
+
+    document.getElementById("decrease").addEventListener("click", function () {
+      counter--;
+      updateDisplay();
+    });
+
+    document.getElementById("reset").addEventListener("click", function () {
+      counter = 0;
+      updateDisplay();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' || e.key === '+') {
+        counter++;
+        updateDisplay();
+      } else if (e.key === 'ArrowDown' || e.key === '-') {
+        counter--;
+        updateDisplay();
+      } else if (e.key.toLowerCase() === 'r') {
+        counter = 0;
+        updateDisplay();
+      }
+    });
+  </script>
+</body>
+</html>

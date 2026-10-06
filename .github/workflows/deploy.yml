@@ -1,0 +1,61 @@
+name: Deploy Suite to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install Dependencies & Build All React Projects
+        run: |
+          for dir in "pro 3/project 03" "pro 4/project 04" "pro 5/Project 05" "pro 6/Project 06" "pro 7/project 07" "pro 8/project 08" "pro 9/project 09" "pro 10/project 10"; do
+            echo "Building $dir..."
+            cd "$dir"
+            npm ci --legacy-peer-deps || npm install
+            npm run build
+            cd ../..
+          done
+
+      - name: Organize Production Distribution
+        run: |
+          node setup_deploy_projects.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

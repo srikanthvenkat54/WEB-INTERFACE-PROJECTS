@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srikanth V — Full-Stack & Frontend Web Applications Suite</title>
+  <meta name="description" content="A curated suite of 10 interactive web applications built with HTML5, CSS3, JavaScript, and React 19. Experience live interactive demos or launch standalone applications.">
+  <meta name="author" content="SRIKANTH V">
+  <meta name="theme-color" content="#080c14">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Srikanth V — Web Applications & Interface Suite">
+  <meta property="og:description" content="10 Production-grade web applications built with pure HTML/JS and React 19. Complete with interactive live device runners.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Lighting -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="#overview" class="brand">
+        <div class="brand-icon">SV</div>
+        <div class="brand-info">
+          <span class="brand-title">Srikanth V</span>
+          <span class="brand-status">10 Projects Live</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#overview" class="nav-link">Overview</a></li>
+          <li><a href="#studio" class="nav-link">Interactive Studio</a></li>
+          <li><a href="#gallery" class="nav-link">Projects Grid</a></li>
+          <li><a href="#architecture" class="nav-link">Tech & Architecture</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme" title="Switch Theme">
+          🌙
+        </button>
+        <a href="https://github.com/srikanthvenkat54/WEB-INTERFACE-PROJECTS" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <span>GitHub</span>
+          <span style="font-size: 11px; opacity: 0.8;">↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="overview">
+      <div class="container">
+        <div class="hero-badge">
+          <span>⚡</span>
+          <span>10 Production Web Applications • HTML & React 19</span>
+        </div>
+
+        <h1 class="hero-title">
+          Web Interface & <span class="gradient-text">Application Suite</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          A high-performance portfolio featuring 10 full-scale applications built with semantic HTML5, vanilla JavaScript, modern CSS architecture, and React 19. Experience live previews with multi-device simulation or launch standalone.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#studio" class="btn-primary">
+            <span>⚡ Launch Interactive Studio</span>
+          </a>
+          <a href="#gallery" class="btn-secondary">
+            <span>📂 Browse All Projects (10)</span>
+          </a>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="stats-strip">
+          <div class="stat-item">
+            <div class="stat-number">10 <span>Apps</span></div>
+            <div class="stat-label">Complete Web Applications</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">02 <span>Pure</span></div>
+            <div class="stat-label">Semantic HTML5 & Vanilla JS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">08 <span>SPAs</span></div>
+            <div class="stat-label">Modern React 19 & Vite Apps</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100% <span>Live</span></div>
+            <div class="stat-label">Responsive & GitHub Pages Ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Studio / Live Runner -->
+    <section class="studio-section" id="studio">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Live Interactive Studio</div>
+            <h2 class="section-title">Test Any Project <span class="gradient-text">In-Place</span></h2>
+            <p class="section-desc">
+              Run and interact with any application directly within this responsive sandbox simulator without navigating away.
+            </p>
+          </div>
+        </div>
+
+        <!-- Studio Shell -->
+        <div class="studio-box">
+          <!-- Horizontal Project Switcher Ribbon -->
+          <div class="studio-ribbon" id="studio-ribbon" role="tablist" aria-label="Project Selection Ribbon">
+            <!-- Dynamically populated by app.js -->
+          </div>
+
+          <!-- Browser Chrome Toolbar -->
+          <div class="studio-toolbar">
+            <div class="toolbar-left">
+              <div class="window-dots" aria-hidden="true">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+
+              <div class="url-bar">
+                <span class="url-ssl">🔒</span>
+                <span class="url-text" id="studio-url-text">https://srikanthv.io/projects/pro-01/</span>
+              </div>
+            </div>
+
+            <!-- Viewport Device Switcher -->
+            <div class="toolbar-center">
+              <button type="button" class="device-btn active" data-device="desktop" title="Desktop Canvas">
+                <span>🖥️</span> Desktop
+              </button>
+              <button type="button" class="device-btn" data-device="tablet" title="Tablet View (768px)">
+                <span>💻</span> Tablet
+              </button>
+              <button type="button" class="device-btn" data-device="mobile" title="Mobile View (390px)">
+                <span>📱</span> Mobile
+              </button>
+            </div>
+
+            <div class="toolbar-right">
+              <button type="button" class="tool-action-btn" id="studio-reload-btn" title="Reload Application Frame">
+                <span>🔄</span> Reload
+              </button>
+              <button type="button" class="tool-action-btn" id="studio-fullscreen-btn" title="Toggle Fullscreen">
+                <span>⛶</span> Fullscreen
+              </button>
+              <a href="projects/pro-01/index.html" target="_blank" rel="noopener noreferrer" class="tool-action-btn" id="studio-standalone-btn" title="Open in New Tab">
+                <span>↗</span> Open Standalone
+              </a>
+            </div>
+          </div>
+
+          <!-- Viewport Stage -->
+          <div class="viewport-stage">
+            <div class="device-frame" id="studio-device-frame">
+              <iframe 
+                id="studio-iframe" 
+                class="studio-iframe" 
+                src="projects/pro-01/index.html" 
+                title="Application Live Preview" 
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Studio Active Info Drawer -->
+          <div class="studio-info">
+            <div>
+              <h3 class="studio-info-title" id="studio-active-title">
+                <span>🔢</span> <span>Counter App</span>
+              </h3>
+              <p class="studio-info-desc" id="studio-active-desc">
+                Interactive counter with real-time numerical color states, step controls, and hotkey navigation.
+              </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+              <span class="badge-tag badge-html" id="studio-active-badge">HTML / JS</span>
+              <div class="studio-tags" id="studio-active-tags">
+                <!-- Tech pills populated by app.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Gallery Section -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Complete Directory</div>
+            <h2 class="section-title">All 10 Applications</h2>
+            <p class="section-desc" id="project-count-label">
+              Showing 10 of 10 Applications
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-bar">
+          <div class="filter-pills" role="tablist">
+            <button type="button" class="filter-chip active" data-filter="all">All Projects (10)</button>
+            <button type="button" class="filter-chip" data-filter="html">Pure HTML & JS (2)</button>
+            <button type="button" class="filter-chip" data-filter="react">React 19 SPAs (8)</button>
+            <button type="button" class="filter-chip" data-filter="academic">Portals & Academic (3)</button>
+            <button type="button" class="filter-chip" data-filter="tools">Productivity & Tools (4)</button>
+          </div>
+
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="search-input" 
+              placeholder="Search by title, React, tool..." 
+              aria-label="Search Applications"
+            >
+          </div>
+        </div>
+
+        <!-- Projects Cards Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Deployment Section -->
+    <section class="arch-section" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Engineering Details</div>
+            <h2 class="section-title">How It's <span class="gradient-text">Architected</span></h2>
+            <p class="section-desc">
+              Multi-application mono-repository design engineered for seamless GitHub Pages static hosting.
+            </p>
+          </div>
+        </div>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <div class="arch-icon">⚡</div>
+            <h3 class="arch-title">Single Index Orchestrator</h3>
+            <p class="arch-desc">
+              The root <code>index.html</code> serves as the primary master showcase portal. It embeds a live device simulator capable of dynamically mounting all 10 apps via iframe sandboxes while preserving isolated execution and CSS scopes.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">⚛️</div>
+            <h3 class="arch-title">Vite 8 & React 19 Engine</h3>
+            <p class="arch-desc">
+              Each React project is built with Vite into self-contained production distributions using relative base paths (<code>base: './'</code>). This ensures zero runtime routing breaks across any GitHub Pages subdirectory or custom domain.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🚀</div>
+            <h3 class="arch-title">Instant GitHub Pages Deployment</h3>
+            <p class="arch-desc">
+              Production assets reside in structured <code>projects/pro-XX/</code> directories while preserving original source folders (<code>pro 1</code> to <code>pro 10</code>). Deploys seamlessly from the <code>main</code> branch with automated GitHub Actions CI/CD.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="brand">
+        <div class="brand-icon">SV</div>
+        <div class="brand-info">
+          <span class="brand-title">Srikanth V</span>
+        </div>
+      </div>
+
+      <p>© 2026 Srikanth V. Built with semantic HTML5, modern CSS, JavaScript & React 19. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="#overview">Back to Top ↑</a>
+        <a href="#studio">Live Studio</a>
+        <a href="#gallery">All Projects</a>
+        <a href="https://github.com/srikanthvenkat54/WEB-INTERFACE-PROJECTS" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
